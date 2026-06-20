@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #07090f;
+  --color-ink-900: #0b0f17;
+  --color-ink-850: #0f1421;
+  --color-ink-800: #131a2a;
+  --color-ink-700: #1c2436;
+  --color-ink-600: #2a3550;
+
+  --color-brand-400: #38bdf8;
+  --color-brand-500: #0ea5e9;
+  --color-brand-600: #0284c7;
+
+  --color-bull: #22c55e;
+  --color-bear: #ef4444;
+  --color-hold: #f59e0b;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+html,
+body {
+  background-color: var(--color-ink-950);
+  color: #e7ecf3;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(14, 165, 233, 0.3);
+}
+
+/* subtle scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a3550 transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #2a3550;
+  border-radius: 999px;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+  animation: shimmer 1.6s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.pulse-dot {
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
