@@ -1,0 +1,31 @@
+{
+  "name": "invest-agent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI Investment Research Agent — takes a company name, researches it, and decides INVEST / PASS / WATCH with full reasoning.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.2.0",
+    "@langchain/groq": "^1.3.0",
+    "@langchain/langgraph": "^1.4.4",
+    "next": "^16.2.9",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "yahoo-finance2": "^3.15.3",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.1",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^5.6.0"
+  }
+}
