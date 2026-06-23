@@ -169,7 +169,32 @@ These are produced by the **live** agent. To reproduce, run the app and search t
 - **One-line:** _<verdict.oneLineSummary>_
 - **Thesis:** _<verdict.thesis>_
 - _(attach the downloaded JSON or a screenshot)_
+- 
 
+## Example runs
+
+### Example 1 — NVIDIA → INVEST
+- **Score:** 81/100 · **Confidence:** 87%
+- **Scorecard:** Business 88 · Financials 82 · 
+  Valuation 62 · Growth 91 · Moat 89 · Risk 72
+- **One-line:** NVIDIA's dominance in AI accelerator 
+  hardware makes it a generational compounder.
+- **Thesis:** [copy from the UI]
+
+### Example 2 — Tesla → WATCH
+...
+
+### Example 3 — TCS → WATCH
+...
+
+### Example 4 — Reliance Industries → WATCH
+...
+
+### Example 5 — SpaceX → PASS
+- The agent identified SpaceX as a private company 
+  at the resolve node and exited immediately.
+- No financials available → PASS with explanation.
+- This demonstrates the conditional early-exit guardrail.
 <!-- Repeat for 3–4 companies. -->
 
 ---
