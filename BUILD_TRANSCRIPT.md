@@ -1,9 +1,12 @@
 # Build Transcript — Capital Lens
 
 > **Bonus section.** The assignment awards bonus points for the LLM chat
-> transcript used while building. The full, verbatim chat log between the
-> developer and the AI assistant is included as a separate export
-> (`chat-transcript.txt` / paste your export here). Below is a curated
+> > The **complete, verbatim LLM chat session** used to build this project
+> is included in `LLM_CHAT_TRANSCRIPT.md`. It contains the full 
+> conversation with Claude (Anthropic) covering architecture decisions,
+> implementation, debugging, deployment, and iteration.
+> This document is a curated summary of the key turning points.
+> The raw transcript is the primary bonus submission.
 > summary of the key decisions and turning points — useful as a quick read
 > of how the product was actually designed.
 
