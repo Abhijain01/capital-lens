@@ -159,44 +159,79 @@ src/
 
 ## Example runs
 
-These are produced by the **live** agent. To reproduce, run the app and search the company, then use **↓ Download report (.json)**. _(Paste your real outputs here — a few suggestions that show range: one strong INVEST, one WATCH, one PASS, one Indian company, and one private company to show the guardrail.)_
+All outputs are from the live agent (generated June 25, 2026).
+Data sourced live from Yahoo Finance + Tavily.
 
-> Suggested set: `NVIDIA` · `Tesla` · `Coca-Cola` · `Reliance Industries` · `SpaceX` (private → PASS)
-
-### Example 1 — `<Company>`  →  `<INVEST / WATCH / PASS>`
-- **Score:** `__/100` · **Confidence:** `__%`
-- **Scorecard:** Business __ · Financials __ · Valuation __ · Growth __ · Moat __ · Risk __
-- **One-line:** _<verdict.oneLineSummary>_
-- **Thesis:** _<verdict.thesis>_
-- _(attach the downloaded JSON or a screenshot)_
-- 
-
-## Example runs
+---
 
 ### Example 1 — NVIDIA → INVEST
-- **Score:** 81/100 · **Confidence:** 87%
-- **Scorecard:** Business 88 · Financials 82 · 
-  Valuation 62 · Growth 91 · Moat 89 · Risk 72
-- **One-line:** NVIDIA's dominance in AI accelerator 
-  hardware makes it a generational compounder.
-- **Thesis:** [copy from the UI]
+- **Score:** 87/100 · **Confidence:** 96% · **Conviction:** High
+- **Scorecard:** Business 90 · Financials 95 · Valuation 70 · Growth 98 · Moat 92 · Risk 80
+- **One-line:** NVIDIA is a leader in the AI computing market with a strong business model and growing demand for its products, making it an attractive investment opportunity.
+- **Thesis:** NVIDIA's strong position in the AI computing market, combined with its growing demand and recent product announcements, make it an attractive investment opportunity. The company's business model is well-suited to capitalise on the growing demand for AI computing. While there are risks associated with intense competition and supply chain disruptions, the company's strengths and growth prospects outweigh these risks.
+- **Key strengths:** Leader in AI computing market · Strong business model · Growing demand
+- **Key risks:** Intense competition · Supply chain disruptions · Geopolitical tensions
+- **Catalysts:** Strong earnings reports · Growing AI computing demand · Recent product announcements
+- **Fair value:** Undervalued given strong growth prospects and competitive position
+- **Live data:** Mkt cap $4.72T · P/E 29.82 · Fwd P/E 15.3 · Rev growth 85.2% · Net margin 63.0% · ROE 114.3%
 
-### Example 2 — Tesla → WATCH
-...
+---
 
-### Example 3 — TCS → WATCH
-...
+### Example 2 — Microsoft → INVEST
+- **Score:** 87/100 · **Confidence:** 96% · **Conviction:** High
+- **Scorecard:** Business 90 · Financials 95 · Valuation 80 · Growth 85 · Moat 95 · Risk 80
+- **One-line:** Microsoft's strong competitive position, diversified business model, and recent catalysts position the company for long-term success.
+- **Thesis:** Microsoft's wide economic moat, diversified business model, and strong brand position the company for long-term success. The company's recent catalysts, such as new product releases and strategic shifts, further enhance its competitive edge. Its strong financial health and competitive moat mitigate key risks including intense competition and significant R&D investment.
+- **Key strengths:** Wide economic moat · Diversified business model · Strong brand
+- **Key risks:** Intense competition · Significant R&D investment · Reliance on key products
+- **Notable:** Active securities fraud class action lawsuit (Copilot issues) captured by the research node — risk analysts flagged it but did not downgrade below INVEST given strong fundamentals.
+- **Live data:** Mkt cap $2.65T · P/E 21.3 · Fwd P/E 18.45 · Rev growth 18.3% · Net margin 39.3% · Op margin 46.3%
 
-### Example 4 — Reliance Industries → WATCH
-...
+---
 
-### Example 5 — SpaceX → PASS
-- The agent identified SpaceX as a private company 
-  at the resolve node and exited immediately.
-- No financials available → PASS with explanation.
-- This demonstrates the conditional early-exit guardrail.
-<!-- Repeat for 3–4 companies. -->
+### Example 3 — Amazon → INVEST
+- **Score:** 85/100 · **Confidence:** 96% · **Conviction:** High
+- **Scorecard:** Business 90 · Financials 85 · Valuation 70 · Growth 95 · Moat 95 · Risk 80
+- **One-line:** Amazon is a dominant player in e-commerce and cloud computing with a strong competitive position and multiple growth drivers.
+- **Thesis:** Amazon's wide economic moat, driven by network effects, brand loyalty, and technological edge, provides significant competitive advantages. Strong financials, high revenue growth, and diversified revenue streams (AWS, retail, ads) position it for continued success. AI investments and AWS growth are key catalysts.
+- **Key strengths:** Wide economic moat · Strong brand loyalty · Technological edge
+- **Key risks:** Increasing competition · Regulatory scrutiny · Supply chain risk
+- **Live data:** Mkt cap $2.46T · P/E 30.84 · Fwd P/E 23.1 · Rev growth 16.6% · Free cash flow $9.81B
 
+---
+
+### Example 4 — TCS → INVEST
+- **Score:** 82/100 · **Confidence:** 96% · **Conviction:** High
+- **Scorecard:** Business 85 · Financials 90 · Valuation 70 · Growth 80 · Moat 90 · Risk 80
+- **One-line:** TCS is a well-established company with a strong business model, competitive position, and growth drivers, making it an attractive investment opportunity.
+- **Thesis:** TCS has a strong business model with diverse revenue streams generating over $30B in FY26. Growth drivers include strong brand value and increasing AI adoption revenue. Low debt (D/E 0.1), high ROE (48.4%), and strong cash generation underpin the financial case. Analyst target of ₹2,944 vs current ₹2,094 implies ~41% upside.
+- **Key strengths:** Strong brand · Diverse revenue streams · Increasing AI revenue
+- **Key risks:** AI impact on hiring · Competitive IT services landscape
+- **Indian market note:** Agent correctly resolved "TCS" → `TCS.NS` (NSE) and pulled INR-denominated fundamentals.
+- **Live data:** Mkt cap ₹7.58T · P/E 15.4 · Fwd P/E 12.63 · Rev growth 9.6% · Div yield 5.9% · Beta 0.23
+
+---
+
+### Example 5 — Tesla → WATCH ⚠️ (LLM overrode quant model)
+- **Score:** 50/100 · **Confidence:** 42% · **Conviction:** Medium
+- **Quant model said:** PASS · **Portfolio manager overrode to:** WATCH
+- **One-line:** Tesla's growth potential and unique business model justify a watch despite overvaluation concerns.
+- **Why the override:** The quantitative scorecard scored all 6 dimensions at 50 (neutral fallback) because the Groq analyze call hit a rate limit — the agent's fallback chain engaged and defaulted to 50/50 neutral scores with `dataQuality: "weak"`. Confidence dropped to 42% accordingly. The portfolio manager LLM, reading the qualitative research, upgraded from PASS to WATCH because of Tesla's genuine long-term potential — and flagged the low confidence explicitly.
+- **What this demonstrates:** Two key agent behaviours working correctly — (1) the fallback chain preventing a crash, and (2) the LLM override with a stated reason when the quant model's data quality is too weak to trust.
+- **Key risks:** Intense competition · Overvaluation (P/E 341.6) · FSD regulatory challenges · Quality issues
+- **Live data:** Mkt cap $1.4T · P/E 341.6 · PEG 5.79 · EV/EBITDA 124.59 · Rev growth 15.8% · Op margin 4.2%
+
+---
+
+### Example 6 — SpaceX (SPCX) → WATCH
+- **Score:** 64/100 · **Confidence:** 96% · **Conviction:** Medium
+- **Scorecard:** Business 80 · Financials 60 · Valuation 55 · Growth 70 · Moat 85 · Risk 40
+- **One-line:** SpaceX's strong competitive moat and growth drivers are offset by high valuation, intense competition, and development costs, warranting a WATCH decision.
+- **Note on private company guardrail:** SpaceX recently completed its IPO (ticker: SPCX on NASDAQ) — the resolve node correctly identified it as a listed equity and ran the full pipeline. Had it still been private, the agent would have exited at the resolve node with an immediate PASS and a clear explanation. Try searching `"Stripe"` to see that guardrail in action.
+- **Risk downgrade triggered:** Risk score of 40 is below the `RISK_DOWNGRADE_FLOOR` of 35 — close but did not trigger. If risk had scored below 35, the decision would have been automatically downgraded from WATCH to PASS.
+- **Key strengths:** Rocket reusability · Vertical integration · Competitive moat
+- **Key risks:** Intense competition · High Starship development costs · Regulatory challenges
+- **Live data:** Mkt cap $2.04T · Fwd P/E 787 · EV/EBITDA 230 · Op margin -41.6% · Net margin -45.0%
 ---
 
 ## Troubleshooting
